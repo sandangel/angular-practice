@@ -1,0 +1,10 @@
+version: "3"
+services:
+  angular:
+    image: sandangel/angular-cli-docker:latest
+    ports:
+      - "4200:4200"
+    command: [yarn, start]
+    volumes:
+      - .:/home/node
+    working_dir: /home/node
