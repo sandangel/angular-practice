@@ -20,6 +20,13 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  get(id) {
+    return this.http
+      .get(this.url + '/' + id)
+      .map(response => response.json())
+      .catch(this.handleError);
+  }
+
   update(resource) {
     return this.http
       .patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))

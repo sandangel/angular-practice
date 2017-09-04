@@ -1,4 +1,4 @@
-PERM = chown -hR $(shell stat -c '%u:%g' .) ./
+PERM = chown -hR $(shell stat -f '%u:%g' .) ./
 
 ARGS = $(filter-out $@,$(MAKECMDGOALS))
 
@@ -30,8 +30,12 @@ add-dev:
 
 remove:
 	@docker-compose run --rm angular yarn remove $(ARGS)
+
+restart:
+	@docker-compose down
+	@docker-compose up
 	
-.PHONY: start init install upgrade upgrade-interactive clean add add-dev remove
+.PHONY: start init install upgrade upgrade-interactive clean add add-dev remove restart
 
 #angular-cli
 
